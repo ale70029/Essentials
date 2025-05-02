@@ -5,4 +5,6 @@
             <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name" (selectUser)="onSelectUser($event)"/>
         </li>
     </ul>
+
+    <app-tasks [name]="selectedUser ? selectedUser.name : '' "/>
 </main>
