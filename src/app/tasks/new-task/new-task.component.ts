@@ -10,12 +10,24 @@ import { FormsModule, NgModel } from '@angular/forms';
 })
 export class NewTaskComponent {
   @Output() cancel = new EventEmitter();
-
-  enteredTitle= "";
-  enteredSummary ="";
+  @Output() add = new EventEmitter<{
+    title:string;
+    summary:string;
+    date:string;
+  }>();
+  enteredTitle = "";
+  enteredSummary = "";
   enteredDate = "";
 
-  onCancel(){
+  onCancel() {
     this.cancel.emit();
+  }
+
+  onSubmitTask() {
+    this.add.emit({
+      title: this.enteredTitle,
+      summary:this.enteredSummary,
+      date:this.enteredDate,
+    });
   }
 }
